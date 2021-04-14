@@ -1,0 +1,115 @@
+/* body {
+    background-color: aliceblue;
+} */
+
+@font-face {
+  font-family: "Donau";
+  src: url("../fonts/Donau.otf");
+}
+
+div.contenedor {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* div.contenedor-login,
+div.contenedor-imagen {
+  width: 50%;
+} */
+
+div.contenedor-login {
+  width: 100%;
+  /* background-color: #514e81; */
+  background-image: url("../images/imagen.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  justify-content: start;
+  align-items: center;
+  padding: 50px;
+  /*  opacity: 0.5; */
+}
+
+/* div.contenedor-imagen {
+ 
+  background-image: url("https://previews.123rf.com/images/anasztazia/anasztazia1303/anasztazia130300034/18729512-portada-del-men%C3%BA-del-restaurante-en-blanco-y-negro.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+} */
+
+div.contenedor-form {
+  font-family: "Donau";
+  width: 30%;
+  background-color: #d0cdcd1c;
+  /* border-top: 5px solid white; */
+  border-radius: 20px;
+  /*  opacity: 0.9; */
+  /* margin: 40px; */
+  margin-top: 100px;
+}
+
+form {
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #e1e1e1;
+  outline: none;
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  transition: 0.3s ease-in;
+}
+
+input:focus {
+  border: 1px solid #393a3a;
+  transition: 0.3s ease-out;
+}
+
+h1.titulo {
+  margin-top: 20px;
+  text-align: start;
+  font-weight: bold;
+  color: white;
+  font-size: 80px;
+  font-family: "Donau";
+}
+
+h1 {
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+button.boton {
+  width: 50%;
+  border-radius: 20px;
+  background-color: #393a3a;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 5px 0;
+  border: 1px solid #e1e1e1;
+  transition: 0.3s ease-in;
+}
+button.boton:hover {
+  background-color: #a8a8a8;
+  transition: 0.3s ease-out;
+}
+input:focus {
+    border: 2px solid #000000;
+  transition: 0.3s ease-out;
+}
+@media (max-width: 768px) {
+  h1.titulo {
+    text-align: center;
+  }
+  div.contenedor-form {
+    width: 100%;
+  }
+}
