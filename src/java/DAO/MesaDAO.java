@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import Modelo.Mesa;
 import java.sql.CallableStatement;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleResultSet;
 import oracle.jdbc.internal.OracleTypes;
 
 /**
@@ -22,17 +24,21 @@ import oracle.jdbc.internal.OracleTypes;
 public class MesaDAO {
 
     PreparedStatement ps;
-    ResultSet rs;
+    OracleResultSet rs;
     Conexion c = new Conexion();
     Connection con;
+    OracleCallableStatement cst;
 
     public List listar() {
         List<Mesa> lista = new ArrayList<>();
         String sql = "SELECT * FROM MESA";//"exe LISTARMESA";
         try {
             con = c.conectar();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            cst = (OracleCallableStatement) con.prepareCall("{call LISTARMESA(?)}");
+            cst.registerOutParameter(1, OracleTypes.CURSOR);
+
+            cst.execute();
+            rs = (OracleResultSet) cst.getObject(1);
             while (rs.next()) {
                 Mesa m = new Mesa();
                 m.setId(rs.getInt(1));
@@ -50,30 +56,59 @@ public class MesaDAO {
 
     }
 
-    public List listarDiferente() {
+    /* public List listarMesa() {
         List<Mesa> lista = new ArrayList<>();
-        String sql = "SELECT * FROM MESA";//"exe LISTARMESA";
+
         try {
-
-            //LLamado del procedimiento al estilo pl/sql
-            String sqlP = "{EXECUTE PROCEDURES.LISTARMESA(?)}";
-            CallableStatement cs = con.prepareCall(sqlP);
-            cs.registerOutParameter(1, OracleTypes.CURSOR);
-            cs.executeQuery();
-            rs = (ResultSet) cs.getObject(1);
-
             con = c.conectar();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
+            cst = con.prepareCall("{call OM (?,?,?)}");
+            cst.registerOutParameter(1, java.sql.Types.NUMERIC);
+            cst.registerOutParameter(2, java.sql.Types.NUMERIC);
+            cst.registerOutParameter(3, java.sql.Types.CHAR);
+            // Ejecuta el procedimiento almacenado
+            cst.execute();
+            rs = cst.getResultSet();
             while (rs.next()) {
-               rs.getInt(1);
-                rs.getInt(2);
-                //rs.getString(3);
-               /* String variable;
+                Mesa m = new Mesa();
+                m.setId(rs.getInt(1));
+                m.setNr_mesa(rs.getInt(2));
+                String variable;
                 variable = rs.getString(3);
-                char caracter = variable.charAt(0);*/
-                
+                char caracter = variable.charAt(0);
+                m.setEstado(caracter);
+                lista.add(m);
             }
+            cst.close();
+        } catch (Exception e) {
+
+        }
+        return lista;
+
+    }*/
+    public List listarProcedimientos() {
+        List<Mesa> lista = new ArrayList<>();
+
+        try {
+            con = c.conectar();
+            cst = (OracleCallableStatement) con.prepareCall("{call LISTARMESA(?)}");
+
+            cst.registerOutParameter(1, OracleTypes.CURSOR);
+
+            cst.execute();
+            rs = (OracleResultSet) cst.getObject(1);
+
+            while (rs.next()) {
+                Mesa m = new Mesa();
+                m.setId(rs.getInt(1));
+                m.setNr_mesa(rs.getInt(2));
+                String variable;
+                variable = rs.getString(3);
+                char caracter = variable.charAt(0);
+                m.setEstado(caracter);
+                lista.add(m);
+            }
+            con.close();
+
         } catch (Exception e) {
 
         }

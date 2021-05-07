@@ -14,7 +14,6 @@ import Modelo.Plato;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -117,7 +116,7 @@ public class Controlador extends HttpServlet {
                 }
                 break;
             case "RESERVAR":
-                List<Mesa> datos = mdao.listar();
+                List<Mesa> datos = mdao.listarProcedimientos();
                 //request.setAttribute("datos", datos);
 
                 session.setAttribute("datos", datos);

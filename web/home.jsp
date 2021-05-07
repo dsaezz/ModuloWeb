@@ -31,6 +31,7 @@
                 <h1 class="titulo">Restaurant</h1>
                 <div class="disponible">
                     <c:if test="${platos == null}">
+                        
                         <c:forEach var="dato" items="${platos}">
                             <div class="card">
                                 <img

@@ -14,7 +14,7 @@ import java.sql.DriverManager;
  */
 public class Conexion {
      String url="jdbc:oracle:thin:@localhost:1521:ORCL";
-    String user="DIEGO";
+    String user="USUARIO";
     String pass="1234";
     Connection con;
     public Connection conectar (){
