@@ -116,7 +116,7 @@ public class Controlador extends HttpServlet {
                 }
                 break;
             case "RESERVAR":
-                List<Mesa> datos = mdao.listarProcedimientos();
+                List<Mesa> datos = mdao.listar();
                 //request.setAttribute("datos", datos);
 
                 session.setAttribute("datos", datos);
