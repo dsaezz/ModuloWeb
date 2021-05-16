@@ -14,12 +14,11 @@ import java.sql.DriverManager;
  */
 public class Conexion {
      String url="jdbc:oracle:thin:@localhost:1521:ORCL";
-    String user="USUARIO";
+    String user="SIGLOXXI";
     String pass="1234";
     Connection con;
     public Connection conectar (){
         try {
-            System.out.println("conectando o algo");
             Class.forName("oracle.jdbc.driver.OracleDriver");
             con = DriverManager.getConnection(url,user,pass);
              return con;

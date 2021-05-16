@@ -31,7 +31,7 @@ h1 {
   width: 100%;
 }
 .boton {
-  display: flex;
+  display: flow;
   justify-content: center;
 }
 button {
@@ -59,6 +59,7 @@ img {
 }
 h1.titulo {
   padding-top: 20px;
+  color:#6c757d !important;
 }
 
 header {
@@ -123,3 +124,4 @@ div.disponible div.card {
   width: 100% !important;
   opacity: 0.9 !important;
 }
+

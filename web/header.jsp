@@ -11,31 +11,41 @@
     <ul>
       <!--  <li><a href="home.jsp" class="btn btn-primary">HOME</a></li> -->
       <li>
-        <form action="Controlador" method="POST">
+        <form action="SigloXXI?accion=HOME" method="POST">
           <input
             type="submit"
             name="accion"
-            value="HOME"
+            value="Home"
             class="btn btn-primary"
           />
         </form>
       </li>
       <!-- <li><a href="listarMesa.jsp" class="btn btn-primary">RESERVAR</a></li> -->
       <li>
-        <form action="Controlador" method="POST">
+        <form action="SigloXXI?accion=Reservar" method="POST">
           <input
             type="submit"
             name="accion"
-            value="RESERVAR"
+            value="Reservar"
             class="btn btn-primary"
           />
         </form>
       </li>
       <li><a href="" class="btn btn-primary">CARTA</a></li>
       <li><a href="" class="btn btn-primary">DELÍVERY</a></li>
+      <li>
+        <form action="SigloXXI?accion=LISTARESERVAS" method="POST">
+          <input
+            type="submit"
+            name="accion"
+            value="Ver Reservas"
+            class="btn btn-primary"
+          />
+        </form>
+      </li>
 
       <li>
-        <form action="Controlador" method="POST">
+        <form action="SigloXXI?accion=Cerrar sesion" method="POST">
           <input
             type="submit"
             name="accion"
