@@ -12,24 +12,32 @@ import java.util.Date;
  */
 public class Reserva {
 
-    int ID, hora;
-    Date fecha;
-    String estado;
-    String rutUsuario;
-    int IdRol;
+    int ID;
+    Date fInicio, fTermino;
+    char estado;
+    String clienteid;
+    char activo;
 
     public Reserva() {
     }
 
-    public Reserva(int ID, int hora, Date fecha, String estado, String rutUsuario, int IdRol) {
+    public Reserva(int ID, Date fInicio, Date fTermino, char estado, String clienteid, char activo) {
         this.ID = ID;
-        this.hora = hora;
-        this.fecha = fecha;
+        this.fInicio = fInicio;
+        this.fTermino = fTermino;
         this.estado = estado;
-        this.rutUsuario = rutUsuario;
-        this.IdRol = IdRol;
+        this.clienteid = clienteid;
+        this.activo = activo;
     }
 
+    @Override
+    public String toString() {
+        return "Reserva{" + "ID=" + ID + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", estado=" + estado + ", clienteid=" + clienteid + ", activo=" + activo + '}';
+    }
+
+    
+    
+    
     public int getID() {
         return ID;
     }
@@ -38,45 +46,47 @@ public class Reserva {
         this.ID = ID;
     }
 
-    public int getHora() {
-        return hora;
+    public Date getfInicio() {
+        return fInicio;
     }
 
-    public void setHora(int hora) {
-        this.hora = hora;
+    public void setfInicio(Date fInicio) {
+        this.fInicio = fInicio;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getfTermino() {
+        return fTermino;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setfTermino(Date fTermino) {
+        this.fTermino = fTermino;
     }
 
-    public String getEstado() {
+    public char getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(char estado) {
         this.estado = estado;
     }
 
-    public String getRutUsuario() {
-        return rutUsuario;
+    public String getClienteid() {
+        return clienteid;
     }
 
-    public void setRutUsuario(String rutUsuario) {
-        this.rutUsuario = rutUsuario;
+    public void setClienteid(String clienteid) {
+        this.clienteid = clienteid;
     }
 
-    public int getIdRol() {
-        return IdRol;
+    public char getActivo() {
+        return activo;
     }
 
-    public void setIdRol(int IdRol) {
-        this.IdRol = IdRol;
+    public void setActivo(char activo) {
+        this.activo = activo;
     }
+
+
     
     
     

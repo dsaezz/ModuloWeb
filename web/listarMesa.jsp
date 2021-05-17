@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="css/css.css" />
     </head>
     <body>
-        <% if (session.getAttribute("usuario") == null) {
+        <% if (session.getAttribute("cliente") == null) {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             }%>
         <div class="contenedor">
@@ -104,11 +104,11 @@
                                 </button>
                             </div>
                         </div>
-                                
-                    
-                                    
-                                    
-                                    
+
+
+
+
+
                     </c:if>
                 </c:forEach>
 
@@ -136,33 +136,46 @@
                             </div>
                             <div class="modal-body">
                                 <h2>¿Desea reservar la mesa seleccionada?</h2>
-                                
-                                <label for="fecha">Ingrese fecha de inicio</label>
-                                <input type="date" id="fecha"/>
-                                <input type="time" />
-                                
-                                
-                                
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    class="btn btn-secondary"
-                                    data-bs-dismiss="modal"
-                                    >
-                                    Cerrar
-                                </button>
 
-                                <form action="SigloXXI?accion=Reservando" method="POST">
-                                    <input
-                                        type="submit"
-                                        name="accion"
-                                        value="Reservar"
-                                        class="btn btn-primary"
-                                        />
-                                </form>
+                                <div class="modal-footer">
+
+
+                                    <form action="SigloXXI?accion=Reservando" method="POST">
+
+                                        <label for="fecha">Ingrese id</label>
+                                        <input type="number" placeholder="Ingrese id" name="id" id="id" /><br>
+                                        <label for="fecha">Ingrese fecha de inicio</label>
+                                        <input type="datetime-local" placeholder="Ingrese fecha y hora" name="inicio" id="inicio"/><br>
+                                        <label for="fecha">Ingrese fecha de termino</label>
+                                        <input type="datetime-local" placeholder="Ingrese fecha y hora termino" name="termino" id="termino" /><br>
+                                        <label for="fecha">Ingrese estado</label>
+                                        <input type="text" placeholder="Ingrese estado" name="estado" id="estado" /><br>
+                                        <label for="fecha">Ingrese id cliente</label>
+                                        <input type="text" placeholder="Ingrese idCliente" name="idCliente" id="idCliente" /><br>
+                                        <label for="fecha">Ingrese activo</label>
+                                        <input type="text" placeholder="Ingrese activo" name="activo" id="activo" /><br><br>
+                                        <input
+                                            type="submit"
+                                            name="accion"
+                                            value="Reservar"
+                                            class="btn btn-primary"
+                                            /><br><br>
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-bs-dismiss="modal"
+                                            >
+                                            Cerrar
+                                        </button>
+                                    </form>
+
+                                </div>
+
+
+
 
                             </div>
+
                         </div>
                     </div>
                 </div>

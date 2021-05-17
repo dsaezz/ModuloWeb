@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="css/css.css" />
     </head>
     <body>
-        <% if (session.getAttribute("usuario") == null) {
+        <% if (session.getAttribute("cliente") == null) {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             }%>
             

@@ -23,7 +23,9 @@
 
     </style>
     <body>
-
+  <% if (session.getAttribute("cliente") == null) {
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
+            }%>
         <div class="contenedor">
             <jsp:include page="perfil.jsp" />
             <main class="contenido">
@@ -34,11 +36,11 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">HORA</th>
-                            <th scope="col">FECHA</th>
+                            <th scope="col">FECHA Y HORA INICIO</th>
+                            <th scope="col">FECHA Y HORA TERMINO</th>
                             <th scope="col">ESTADO</th>
-                            <th scope="col">RUT</th>
-                            <th scope="col">ROL</th>
+                            <th scope="col">CLIENTE</th>
+                            <th scope="col">ACTIVO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,14 +48,12 @@
 
                             <tr>
                                 <td>${r.getID()}</td>
-                                <td>${r.getHora()}</td>
-                                <td>${r.getFecha()}</td>
+                                <td>${r.getfInicio()}</td>
+                                <td>${r.getfTermino()}</td>
                                 <td>${r.getEstado()}</td>
-                                <td>${r.getRutUsuario()}</td>
-                                <td>${r.getIdRol()}</td>
+                                <td>${r.getClienteid()}</td>
+                                <td>${r.getActivo()}</td>
                             </tr>
-
-
 
                         </c:forEach>
                     </tbody>

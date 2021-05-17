@@ -17,16 +17,16 @@
     </div>
     <div class="contenido-usuario">
       <p>
-        <span>Nombre : </span><span class="datos"> ${usuario.getNombre()}</span>
+        <span>Nombre : </span><span class="datos"> ${cliente.getNombre()}</span>
       </p>
       <p>
         <span>Apellidos : </span
         ><span class="datos"
-          >${usuario.getApellido_P()} ${usuario.getApellido_M()}</span
+          >${cliente.getApellido()}</span
         >
       </p>
       <p>
-        <span>Email : </span><span class="datos">${usuario.getCorreo()}</span>
+        <span>Email : </span><span class="datos">${cliente.getCorreo()}</span>
       </p>
     </div>
   </div>

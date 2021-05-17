@@ -13,19 +13,20 @@ public class Mesa {
     int id;
     int nr_mesa;
     char estado, activo;
+    String UsuarioRut, UsuarioRol_ID_ROL;
     
 
     public Mesa() {
     }
 
-    public Mesa(int id, int nr_mesa, char estado, char activo) {
+    public Mesa(int id, int nr_mesa, char estado, char activo, String UsuarioRut, String UsuarioRol_ID_ROL) {
         this.id = id;
         this.nr_mesa = nr_mesa;
         this.estado = estado;
         this.activo = activo;
+        this.UsuarioRut = UsuarioRut;
+        this.UsuarioRol_ID_ROL = UsuarioRol_ID_ROL;
     }
-
-    
 
     public int getId() {
         return id;
@@ -58,6 +59,31 @@ public class Mesa {
     public void setActivo(char activo) {
         this.activo = activo;
     }
+
+    public String getUsuarioRut() {
+        return UsuarioRut;
+    }
+
+    public void setUsuarioRut(String UsuarioRut) {
+        this.UsuarioRut = UsuarioRut;
+    }
+
+    public String getUsuarioRol_ID_ROL() {
+        return UsuarioRol_ID_ROL;
+    }
+
+    public void setUsuarioRol_ID_ROL(String UsuarioRol_ID_ROL) {
+        this.UsuarioRol_ID_ROL = UsuarioRol_ID_ROL;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa{" + "id=" + id + ", nr_mesa=" + nr_mesa + ", estado=" + estado + ", activo=" + activo + ", UsuarioRut=" + UsuarioRut + ", UsuarioRol_ID_ROL=" + UsuarioRol_ID_ROL + '}';
+    }
+    
+    
+
+   
     
  
     

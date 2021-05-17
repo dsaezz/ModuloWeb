@@ -43,10 +43,17 @@ public class MesaDAO {
                 Mesa m = new Mesa();
                 m.setId(rs.getInt(1));
                 m.setNr_mesa(rs.getInt(2));
+                
                 String variable;
                 variable = rs.getString(3);
                 char caracter = variable.charAt(0);
                 m.setEstado(caracter);
+                
+                String ac;
+                ac = rs.getString(4);
+                char activo = ac.charAt(0);
+                m.setActivo(activo);
+                
                 lista.add(m);
             }
         } catch (Exception e) {

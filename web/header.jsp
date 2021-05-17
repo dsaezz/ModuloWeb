@@ -31,8 +31,6 @@
           />
         </form>
       </li>
-      <li><a href="" class="btn btn-primary">CARTA</a></li>
-      <li><a href="" class="btn btn-primary">DELÍVERY</a></li>
       <li>
         <form action="SigloXXI?accion=LISTARESERVAS" method="POST">
           <input

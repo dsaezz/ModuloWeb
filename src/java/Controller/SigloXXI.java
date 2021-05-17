@@ -5,16 +5,20 @@
  */
 package Controller;
 
+import DAO.ClienteDAO;
 import DAO.MesaDAO;
 import DAO.PlatoDAO;
 import DAO.ReservaDAO;
 import DAO.UsuarioDAO;
+import Modelo.Cliente;
 import Modelo.Mesa;
 import Modelo.Plato;
 import Modelo.Reserva;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +34,7 @@ public class SigloXXI extends HttpServlet {
     UsuarioDAO udao = new UsuarioDAO();
     PlatoDAO pdao = new PlatoDAO();
     ReservaDAO rdao = new ReservaDAO();
+    ClienteDAO cdao = new ClienteDAO();
 
     public SigloXXI() {
     }
@@ -51,14 +56,14 @@ public class SigloXXI extends HttpServlet {
                 case "Ingresar":
                     String email = request.getParameter("email");
                     String password = request.getParameter("password");
-                    Usuario usuario = udao.login(email, password);
+                    Cliente cliente = cdao.login(email, password);
 
-                    if (usuario == null) {
+                    if (cliente == null) {
                         //request.getRequestDispatcher("login.jsp").forward(request, response);
                         response.sendRedirect(request.getContextPath() + "/login.jsp");
                     } else {
 
-                        session.setAttribute("usuario", usuario);
+                        session.setAttribute("cliente", cliente);
                         response.sendRedirect(request.getContextPath() + "/home.jsp");
                     }
                     break;
@@ -72,20 +77,36 @@ public class SigloXXI extends HttpServlet {
                     break;
                 case "Reservando":
 
+                    int idReserva = Integer.parseInt(request.getParameter("id"));
+
+                    String startDateStr = request.getParameter("inicio");
+                    SimpleDateFormat sdf = new SimpleDateFormat("hh: mm: ss a dd-MMM-aaaa");
+                    Date inicio = (Date) sdf.parse(startDateStr);
+                    
+                    String t = request.getParameter("termino");
+                    Date termino = (Date) sdf.parse(t);
+
+                    String es = request.getParameter("estado");
+                    char estadoReserva = es.charAt(0);
+                    int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+                    String ac = request.getParameter("activo");
+                    char activoReserva = ac.charAt(0);
+                    rdao.reservar(idReserva, inicio, termino, estadoReserva, idCliente, activoReserva);
                     // request.getRequestDispatcher("reservar.jsp").forward(request, response);
-                    response.sendRedirect(request.getContextPath() + "/reservar.jsp");
+                    response.sendRedirect(request.getContextPath() + "/verReserva.jsp");
                     break;
 
                 case "Registrarse":
 
+                    int id = Integer.parseInt(request.getParameter("id"));
                     String rut = request.getParameter("rut");
                     String nombre = request.getParameter("nombre");
-                    String apellidoP = request.getParameter("apellidoP");
-                    String apellidoM = request.getParameter("apellidoM");
+                    String apellido = request.getParameter("apellido");
+                    String correo = request.getParameter("correo");
                     String direccion = request.getParameter("direccion");
-                    String emailR = request.getParameter("emailR");
-                    String passwordR = request.getParameter("passwordR");
-                    udao.registrar(rut, nombre, apellidoM, apellidoP, emailR, passwordR, direccion);
+                    String activo = request.getParameter("activo");
+                    String pass = request.getParameter("pass");
+                    cdao.registrar(id, rut, nombre, apellido, correo, direccion, activo, pass);
                     response.sendRedirect(request.getContextPath() + "/login.jsp");
 
                     break;
