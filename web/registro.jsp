@@ -37,13 +37,11 @@
                 <div class="contenedor-registro">
                     <h1>Registrate</h1>
                     <form action="SigloXXI?accion=Registrarse" method="POST">
-                        <input type="text" placeholder="Ingrese id" name="id" id="id" />
                         <input type="text" placeholder="Ingrese rut" name="rut" id="rut"/>
                         <input type="text" placeholder="Ingrese nombre" name="nombre" id="nombre" />
                         <input type="text" placeholder="Ingrese apellido" name="apellido" id="apellido" />
                         <input type="email" placeholder="Ingrese correo" name="correo" id="correo" />
                         <input type="text" placeholder="Ingrese direccion" name="direccion" id="direccion" />
-                        <input type="text" placeholder="Ingrese activo" name="activo" id="activo"/>
                         <input type="password" placeholder="Ingrese password" name="pass" id="pass" />
                         <center><input class="boton" name="accion" type="submit" value="Registrarse"/></center>
                     </form>

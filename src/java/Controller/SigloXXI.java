@@ -98,15 +98,13 @@ public class SigloXXI extends HttpServlet {
 
                 case "Registrarse":
 
-                    int id = Integer.parseInt(request.getParameter("id"));
                     String rut = request.getParameter("rut");
                     String nombre = request.getParameter("nombre");
                     String apellido = request.getParameter("apellido");
                     String correo = request.getParameter("correo");
                     String direccion = request.getParameter("direccion");
-                    String activo = request.getParameter("activo");
                     String pass = request.getParameter("pass");
-                    cdao.registrar(id, rut, nombre, apellido, correo, direccion, activo, pass);
+                    cdao.registrar(rut, nombre, apellido, correo, direccion, pass);
                     response.sendRedirect(request.getContextPath() + "/login.jsp");
 
                     break;

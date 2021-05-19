@@ -7,9 +7,13 @@ package DAO;
 
 import Config.Conexion;
 import Modelo.Cliente;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +25,7 @@ public class ClienteDAO {
     ResultSet rs;
     Conexion c = new Conexion();
     Connection con;
+    private Object ex;
 
     public Cliente login(String correo, String password) {
         Cliente cliente = new Cliente();
@@ -28,7 +33,7 @@ public class ClienteDAO {
 
         /* String sql = "select rut,nombre,apellido_p,apellido_m,tipo_rol,correo,direccion from usuario ,rol where correo=" +correo+ " and password="+password+" and rol_id_rol = id_rol"; */
         String sql = "select ID_CLIENTE, RUT, NOMBRE, APELLIDO, CORREO, DIRECCION, ACTIVO from SIGLOXXI.CLIENTE where CORREO=" + "'" + correo + "'" + " and CLAVE=" + "'" + password + "'" + " and ID_CLIENTE = ID_CLIENTE";
-       // String sql = "select rut,nombre,apellido_p,apellido_m,tipo_rol,correo,direccion from usuario ,rol where correo=" + "'" + correo + "'" + " and clave=" + "'" + password + "'" + " and rol_id_rol = id_rol";
+        // String sql = "select rut,nombre,apellido_p,apellido_m,tipo_rol,correo,direccion from usuario ,rol where correo=" + "'" + correo + "'" + " and clave=" + "'" + password + "'" + " and rol_id_rol = id_rol";
 
         int r = 0;
         try {
@@ -43,7 +48,7 @@ public class ClienteDAO {
                 cliente.setApellido(rs.getString(4));
                 cliente.setCorreo(rs.getString(5));
                 cliente.setDireccion(rs.getString(6));
-                 String variable;
+                String variable;
                 variable = rs.getString(7);
                 char caracter = variable.charAt(0);
                 cliente.setActivo(caracter);
@@ -63,17 +68,26 @@ public class ClienteDAO {
 
     }
 
-    public void registrar(int id, String rut, String nombre, String apellido, String correo, String direccion, String activo, String pass) {
-        
-        String sql = "INSERT INTO SIGLOXXI.CLIENTE (ID_CLIENTE, RUT, NOMBRE, APELLIDO, CORREO, DIRECCION, CLAVE, ACTIVO) VALUES ("+"'"+id+"'"+", "+"'"+rut+"'"+", "+"'"+nombre+"'"+", "+"'"+apellido+"'"+", "+"'"+correo+"'"+", "+"'"+direccion+"'"+", "+"'"+pass+"'"+", "+"'"+activo+"'"+")";
-        
+    public void registrar(String rut, String nombre, String apellido, String correo, String direccion, String pass) {
+
         try {
             con = c.conectar();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-        } catch (Exception e) {
+            // ps = con.prepareStatement(sql);
+
+            CallableStatement cmd = con.prepareCall("{call AGREGARCLIENTE(?,?,?,?,?,?,?)}");
+
+            cmd.setString(1, rut);
+            cmd.setString(2, nombre);
+            cmd.setString(3, apellido);
+            cmd.setString(4, correo);
+            cmd.setString(5, direccion);
+            cmd.setString(6, pass);
+            cmd.setString(7, "1");
+            cmd.executeQuery();
+        } catch (SQLException e) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
 }
