@@ -27,7 +27,7 @@ public class ClienteDAO {
         // String sql = "select * from "
 
         /* String sql = "select rut,nombre,apellido_p,apellido_m,tipo_rol,correo,direccion from usuario ,rol where correo=" +correo+ " and password="+password+" and rol_id_rol = id_rol"; */
-        String sql = "select ID_CLIENTE, RUT, NOMBRE, APELLIDO, CORREO, DIRECCION, ACTIVO from SIGLOXXI.CLIENTE where CORREO=" + "'" + correo + "'" + " and CLAVE=" + "'" + password + "'" + " and ID_CLIENTE = ID_CLIENTE";
+        String sql = "select ID_CLIENTE, RUT, NOMBRE, APELLIDO, CORREO, DIRECCION, ACTIVO from CLIENTE where CORREO=" + "'" + correo + "'" + " and CLAVE=" + "'" + password + "'" + " and ID_CLIENTE = ID_CLIENTE";
        // String sql = "select rut,nombre,apellido_p,apellido_m,tipo_rol,correo,direccion from usuario ,rol where correo=" + "'" + correo + "'" + " and clave=" + "'" + password + "'" + " and rol_id_rol = id_rol";
 
         int r = 0;
