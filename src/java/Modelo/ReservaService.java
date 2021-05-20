@@ -6,22 +6,23 @@
 package Modelo;
 
 import java.util.Date;
+
 /**
  *
  * @author dsaez
  */
-public class Reserva {
+public class ReservaService {
 
     int ID;
     Date fInicio, fTermino;
     char estado;
-    String clienteid;
+    int clienteid;
     char activo;
 
-    public Reserva() {
+    public ReservaService() {
     }
 
-    public Reserva(int ID, Date fInicio, Date fTermino, char estado, String clienteid, char activo) {
+    public ReservaService(int ID, Date fInicio, Date fTermino, char estado, int clienteid, char activo) {
         this.ID = ID;
         this.fInicio = fInicio;
         this.fTermino = fTermino;
@@ -30,12 +31,15 @@ public class Reserva {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Reserva{" + "ID=" + ID + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", estado=" + estado + ", clienteid=" + clienteid + ", activo=" + activo + '}';
+    public int getClienteid() {
+        return clienteid;
     }
 
-    
+    public void setClienteid(int clienteid) {
+        this.clienteid = clienteid;
+    }
+
+  
     
     
     public int getID() {
@@ -70,13 +74,7 @@ public class Reserva {
         this.estado = estado;
     }
 
-    public String getClienteid() {
-        return clienteid;
-    }
-
-    public void setClienteid(String clienteid) {
-        this.clienteid = clienteid;
-    }
+   
 
     public char getActivo() {
         return activo;
@@ -86,9 +84,12 @@ public class Reserva {
         this.activo = activo;
     }
 
+    @Override
+    public String toString() {
+        return "Reserva{" + "ID=" + ID + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", estado=" + estado + ", clienteid=" + clienteid + ", activo=" + activo + '}';
+    }
 
     
     
-    
-    
+
 }

@@ -13,7 +13,7 @@ import DAO.UsuarioDAO;
 import Modelo.Cliente;
 import Modelo.Mesa;
 import Modelo.Plato;
-import Modelo.Reserva;
+import Modelo.ReservaService;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -116,7 +116,7 @@ public class SigloXXI extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/home.jsp");
                     break;
                 case "LISTARESERVAS":
-                    List<Reserva> re = rdao.listar();
+                    List<ReservaService> re = rdao.listaReservas();
                     session.setAttribute("listaReserva", re);
                     //request.getRequestDispatcher("verReserva.jsp").forward(request, response);
                     response.sendRedirect(request.getContextPath() + "/verReserva.jsp");

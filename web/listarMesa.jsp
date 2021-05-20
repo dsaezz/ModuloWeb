@@ -47,8 +47,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Mesa ${dato.getId()}</h5>
                                     <p class="card-text">
-                                        <!--  Some quick example text to build on the card title and make
-                                                                                        up the bulk of the card's content. -->
+                                        
                                         Mesa para ${dato.getNr_mesa()} personas.
                                     </p>
                                     <!--  <form action="Controlador" method="POST">
