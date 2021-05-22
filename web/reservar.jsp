@@ -36,12 +36,29 @@
                 <h1 class="titulo">SIGLO XXI</h1>
                 <div class="contenedor-reserva">
                     <h1>Registrar Reserva</h1>
-                    <form action="Controlador" method="POST">
-                        <input type="text" placeholder="Ingrese su Rut" name="rut" id="rut" />
-                        <input type="text" placeholder="Ingrese hora" name="hora" id="hora"/>
-                        <input type="text" placeholder="Ingrese fecha" name="fecha" id="fecha" />
-                        <center><input class="button" name="accion" type="submit" value="RegistrarReserva"/></center>
-                    </form>
+                      <form action="SigloXXI?accion=Reservando" method="POST">
+
+                                        <label for="fecha">Ingrese id</label>
+                                        <input type="number" placeholder="Ingrese id" name="id" id="id" /><br>
+                                        <label for="fecha">Ingrese fecha de inicio</label>
+                                        <input type="datetime" placeholder="Ingrese fecha y hora" name="inicio" id="inicio"/><br>
+                                        <label for="fecha">Ingrese fecha de termino</label>
+                                        <input type="datetime" placeholder="Ingrese fecha y hora termino" name="termino" id="termino" /><br>
+                                        <input type="hidden"  name="idCliente" id="idCliente" value="${cliente.getIdCliente()}" /><br>
+                                        <input
+                                            type="submit"
+                                            name="accion"
+                                            value="Reservar"
+                                            class="btn btn-primary"
+                                            /><br><br>
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-bs-dismiss="modal"
+                                            >
+                                            Cerrar
+                                        </button>
+                                    </form>
                 </div>
             </div>
             <!-- <div class="contenedor-imagen">1</div> -->

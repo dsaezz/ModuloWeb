@@ -8,9 +8,11 @@ package DAO;
 import Config.Conexion;
 import Modelo.Mesa;
 import Modelo.ReservaService;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -99,18 +101,41 @@ public class ReservaDAO {
 
         return datos;
     }
+    
+     public String reservar(int id, String inicio, String termino) {
 
-    public void reservar(int id, Date inicio, Date termino, char estado, int idCliente, char activo) {
-
-        String sql = "INSERT INTO SIGLOXXI.RESERVA (ID_RESERVA, FHORA_LLEGADA, FHORA_SALIDA, ESTADO_RESERVA, CLIENTE_ID_CLIENTE, ACTIVO) VALUES (" + "'" + id + "'" + ", " + "'" + inicio + "'" + ", " + "'" + termino + "'" + ", " + "'" + estado + "'" + ", " + "'" + idCliente + "'" + ", " + "'" + activo + "'" + ")";
-
+        /*SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+       String ini = formato.format(inicio);*/
+        int res;
+        String msj = "";
         try {
             con = c.conectar();
-            ps = con.prepareStatement(sql);
-            ors = (OracleResultSet) ps.executeQuery();
-        } catch (Exception e) {
-        }
 
+            CallableStatement cmd = con.prepareCall("{call AGREGARRESERVA(?,?,?,?,?,?)}");
+
+            cmd.setInt(1, id);
+            cmd.setDate(2, java.sql.Date.valueOf(inicio));
+            cmd.setDate(3, java.sql.Date.valueOf(termino));
+            cmd.setString(4, "D");
+            cmd.setString(5, "1");
+            cmd.setString(6, "1");
+            //el metodo ve la cantides de filas que fueron afectadas
+            res = cmd.executeUpdate();
+
+            if (res == 1) {
+
+                msj = "La reserva se realizo correctamente";
+
+            } else {
+                msj = "Error no se pudo agregar";
+            }
+
+        } catch (SQLException e) {
+            System.out.print("loloololo " + inicio + e);
+        }
+        return msj;
     }
+
+
 
 }

@@ -2,4 +2,9 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/ServicioWebSigloXXI/Servicios?wsdl" uri="src/conf/xml-resources/web-service-references/Servicios/wsdl/localhost_8080/ServicioWebSigloXXI/Servicios.wsdl"/>
     <system systemId="http://localhost:8080/ServicioWebSigloXXI/Servicios?xsd=1" uri="src/conf/xml-resources/web-service-references/Servicios/wsdl/localhost_8080/ServicioWebSigloXXI/Servicios.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ServicioWeb/Servicios?wsdl" uri="src/conf/xml-resources/web-service-references/Servicios/wsdl/localhost_8080/ServicioWeb/Servicios.wsdl"/>
+    <system systemId="http://localhost:8080/ServicioWeb/Servicios?xsd=1" uri="src/conf/xml-resources/web-service-references/Servicios/wsdl/localhost_8080/ServicioWeb/Servicios.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/ServicioWeb/WSServicios?wsdl" uri="src/conf/xml-resources/web-service-references/WSServicios/wsdl/localhost_8080/ServicioWeb/WSServicios.wsdl"/>
+    <system systemId="http://localhost:8080/ServicioWeb/WSServicios?WSDL" uri="src/conf/xml-resources/web-service-references/WSServicios/wsdl/localhost_8080/ServicioWeb/WSServicios.wsdl"/>
+    <system systemId="http://localhost:8080/ServicioWeb/WSServicios?xsd=1" uri="src/conf/xml-resources/web-service-references/WSServicios/wsdl/localhost_8080/ServicioWeb/WSServicios.xsd_1.xsd"/>
 </catalog>

@@ -47,7 +47,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Mesa ${dato.getId()}</h5>
                                     <p class="card-text">
-                                        
+
                                         Mesa para ${dato.getNr_mesa()} personas.
                                     </p>
                                     <!--  <form action="Controlador" method="POST">
@@ -65,8 +65,7 @@
                                     <button
                                         type="submit"
                                         class="btn btn-primary"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modal1"
+                                        onclick="location.href='http://localhost:8080/ModuloWeb/reservar.jsp'""
                                         >
                                         Reservar
                                     </button
@@ -133,47 +132,7 @@
                                     aria-label="Close"
                                     ></button>
                             </div>
-                            <div class="modal-body">
-                                <h2>¿Desea reservar la mesa seleccionada?</h2>
 
-                                <div class="modal-footer">
-
-
-                                    <form action="SigloXXI?accion=Reservando" method="POST">
-
-                                        <label for="fecha">Ingrese id</label>
-                                        <input type="number" placeholder="Ingrese id" name="id" id="id" /><br>
-                                        <label for="fecha">Ingrese fecha de inicio</label>
-                                        <input type="datetime-local" placeholder="Ingrese fecha y hora" name="inicio" id="inicio"/><br>
-                                        <label for="fecha">Ingrese fecha de termino</label>
-                                        <input type="datetime-local" placeholder="Ingrese fecha y hora termino" name="termino" id="termino" /><br>
-                                        <label for="fecha">Ingrese estado</label>
-                                        <input type="text" placeholder="Ingrese estado" name="estado" id="estado" /><br>
-                                        <label for="fecha">Ingrese id cliente</label>
-                                        <input type="text" placeholder="Ingrese idCliente" name="idCliente" id="idCliente" /><br>
-                                        <label for="fecha">Ingrese activo</label>
-                                        <input type="text" placeholder="Ingrese activo" name="activo" id="activo" /><br><br>
-                                        <input
-                                            type="submit"
-                                            name="accion"
-                                            value="Reservar"
-                                            class="btn btn-primary"
-                                            /><br><br>
-                                        <button
-                                            type="button"
-                                            class="btn btn-secondary"
-                                            data-bs-dismiss="modal"
-                                            >
-                                            Cerrar
-                                        </button>
-                                    </form>
-
-                                </div>
-
-
-
-
-                            </div>
 
                         </div>
                     </div>

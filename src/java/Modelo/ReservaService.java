@@ -5,7 +5,9 @@
  */
 package Modelo;
 
+import WebServiceCliente.WSServicios_Service;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,19 @@ public class ReservaService {
 
     public ReservaService() {
     }
+
+    public java.util.List<WebServiceCliente.Reserva> listar() {
+        WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
+        WebServiceCliente.WSServicios port = service.getWSServiciosPort();
+        return port.listarReserva();
+    }
+    
+    public String agregar(int id, java.lang.String inicio,java.lang.String termino , int idCliente){
+        WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
+        WebServiceCliente.WSServicios port = service.getWSServiciosPort();
+        return port.agregarReserva(id, inicio, termino, idCliente);
+    }
+    
 
     public ReservaService(int ID, Date fInicio, Date fTermino, char estado, int clienteid, char activo) {
         this.ID = ID;
@@ -39,9 +54,6 @@ public class ReservaService {
         this.clienteid = clienteid;
     }
 
-  
-    
-    
     public int getID() {
         return ID;
     }
@@ -74,8 +86,6 @@ public class ReservaService {
         this.estado = estado;
     }
 
-   
-
     public char getActivo() {
         return activo;
     }
@@ -88,8 +98,5 @@ public class ReservaService {
     public String toString() {
         return "Reserva{" + "ID=" + ID + ", fInicio=" + fInicio + ", fTermino=" + fTermino + ", estado=" + estado + ", clienteid=" + clienteid + ", activo=" + activo + '}';
     }
-
-    
-    
 
 }

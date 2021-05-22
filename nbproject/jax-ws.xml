@@ -3,10 +3,10 @@
   <services>
   </services>
   <clients>
-    <client name="Servicios">
-      <wsdl-url>http://localhost:8080/ServicioWebSigloXXI/Servicios?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8080/ServicioWebSigloXXI/Servicios.wsdl</local-wsdl-file>
-      <package-name>servicioweb</package-name>
+    <client name="WSServicios">
+      <wsdl-url>http://localhost:8080/ServicioWeb/WSServicios?WSDL</wsdl-url>
+      <local-wsdl-file>localhost_8080/ServicioWeb/WSServicios.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">WebServiceCliente</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -23,7 +23,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8080/ServicioWebSigloXXI/Servicios?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8080/ServicioWeb/WSServicios?WSDL</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -32,6 +32,10 @@
         <wsimport-option>
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>WebServiceCliente</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>
