@@ -25,7 +25,6 @@
             <main class="contenido">
                 <jsp:include page="header.jsp" />
                 <h1 class="titulo">Restaurant</h1>
-
                 <!-- <form method="POST" action="Controlador" class="formulario">
                               <input
                                 type="submit"
@@ -49,35 +48,34 @@
                                     <p class="card-text">
 
                                         Mesa para ${dato.getNr_mesa()} personas.
-                                    </p>
-                                    <!--  <form action="Controlador" method="POST">
-                                                               <input
-                                                                   type="submit"
-                                                                   class="btn btn-primary"
-                                                                   data-bs-toggle="modal"
-                                                                   data-bs-target="#modal1"
-                                                                   name="accion"
-                                                                   value="Reservar"
-                                                                   />
-                                                               <input type="hidden" name="idReservar" value="<c:out value="${dato.getId()}" />">
-                                                           </form> -->
 
-                                    <button
-                                        type="submit"
-                                        class="btn btn-primary"
-                                        onclick="location.href='http://localhost:8080/ModuloWeb/reservar.jsp'""
-                                        >
-                                        Reservar
-                                    </button
+                                    </p>
+
+                                    <form name="res" action="SigloXXI?accion=irReserva" method="post" >
+                                        <input type="hidden" id="mesa" name="mesa" value=${dato}>
+                                    </form>
+                                      
+                                          <%
+                                        String numeroMesa;
+                                        numeroMesa=request.getParameter("mesa");
+                                        
+                                        %>
+                                           <button
+                                          type="submit"
+                                          class="btn btn-primary"
+                                          onclick="res.submit()"
+                                          >
+                                          Reservar
+                                           </button>
 
 
 
                                 </div>
                             </div>
-                        </div>
+                       
                     </c:if>
                     <c:if test="${dato.getEstado() == 'O'}">
-                        <div class="reservado card">
+                        <div class="card">
                             <img
                                 src="http://loredomuebles.com/wp-content/uploads/2017/11/MESAS-1080x675.jpg"
                                 class="card-img-top"
@@ -86,8 +84,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">Mesa ${dato.getId()}</h5>
                                 <p class="card-text">
-                                    <!--  Some quick example text to build on the card title and make
-                                                                                    up the bulk of the card's content. -->
                                     Mesa para ${dato.getNr_mesa()} personas.
                                 </p>
 
@@ -109,7 +105,7 @@
 
                     </c:if>
                 </c:forEach>
-
+ </div>
                 <div
                     class="modal fade"
                     id="modal1"

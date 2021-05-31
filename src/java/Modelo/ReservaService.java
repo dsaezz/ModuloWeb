@@ -30,10 +30,21 @@ public class ReservaService {
         return port.listarReserva();
     }
     
-    public String agregar(int id, java.lang.String inicio,java.lang.String termino , int idCliente){
+    public String agregar( String inicio,String termino , int idCliente){
         WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
         WebServiceCliente.WSServicios port = service.getWSServiciosPort();
-        return port.agregarReserva(id, inicio, termino, idCliente);
+        return port.agregarReserva( inicio, termino, idCliente);
+    }
+    
+     public String asignarMesa(int idMesa,int idReserva){
+        WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
+        WebServiceCliente.WSServicios port = service.getWSServiciosPort();
+        return port.asignarMesa(idMesa,idReserva);
+    }
+     public int obtenerIdReserva(){
+        WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
+        WebServiceCliente.WSServicios port = service.getWSServiciosPort();
+        return port.obtenerIDReserva();
     }
     
 

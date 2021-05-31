@@ -21,6 +21,9 @@
             type="text/css"
             media="screen"
             />
+        
+        
+        
         <title>Restaurant</title>
     </head>
     <style>
@@ -31,21 +34,23 @@
         
     </style>
     <body>
-        <div class="contenedor">
+        
+        <div class="contenedor" >
             <div class="contenedor-login">
                 <h1 class="titulo">SIGLO XXI</h1>
-                <div class="contenedor-registro">
+                <div class="contenedor-reserva" >
                     <h1>Registrate</h1>
                     <form action="SigloXXI?accion=Registrarse" method="POST">
                         <input type="text" placeholder="Ingrese rut" name="rut" id="rut"/>
                         <input type="text" placeholder="Ingrese nombre" name="nombre" id="nombre" />
-                        <input type="text" placeholder="Ingrese apellido" name="apellido" id="apellido" />
-                        <input type="email" placeholder="Ingrese correo" name="correo" id="correo" />
-                        <input type="text" placeholder="Ingrese direccion" name="direccion" id="direccion" />
-                        <input type="password" placeholder="Ingrese password" name="pass" id="pass" />
+                        <input type="text" placeholder="Ingrese Apellidos" name="apellido" id="apellido" />
+                        <input type="email" placeholder="Ingrese Correo" name="correo" id="correo" />
+                        <input type="text" placeholder="Ingrese Dirección" name="direccion" id="direccion" />
+                        <input type="password" placeholder="Ingrese Contraseña" name="pass" id="pass" />
                         <center><input class="boton" name="accion" type="submit" value="Registrarse"/></center>
                     </form>
                 </div>
+            </div>
             </div>
             <!-- <div class="contenedor-imagen">1</div> -->
         </div>

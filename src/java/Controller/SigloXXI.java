@@ -29,13 +29,15 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/SigloXXI")
 public class SigloXXI extends HttpServlet {
-
+    int idMesa;
     MesaDAO mdao = new MesaDAO();
     UsuarioDAO udao = new UsuarioDAO();
     PlatoDAO pdao = new PlatoDAO();
     ReservaDAO rdao = new ReservaDAO();
     ClienteDAO cdao = new ClienteDAO();
     ReservaService rs = new ReservaService();
+    List<Mesa> m = mdao.listar();
+   
 
     public SigloXXI() {
     }
@@ -77,25 +79,24 @@ public class SigloXXI extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/listarMesa.jsp");
                     break;
                 case "Reservando":
-
-                    int idReserva = Integer.parseInt(request.getParameter("id"));
+                    //  int idMesa = Integer.parseInt(request.getParameter("idMesa"));
                     int idCliente = Integer.parseInt(request.getParameter("idCliente"));
                     String inicio = request.getParameter("inicio");
                     String termino = request.getParameter("termino");
-                    
-                    
+                    rs.agregar(inicio, termino, idCliente);
 
-                    /*String startDateStr = request.getParameter("inicio");
-                    SimpleDateFormat sdf = new SimpleDateFormat("hh: mm: ss a dd-MMM-aaaa");
-                    Date inicio = (Date) sdf.parse(startDateStr);
-                    
-                    String t = request.getParameter("termino");
-                    Date termino = (Date) sdf.parse(t);*/
-                    rs.agregar(idReserva, inicio, termino,idCliente);
-
+                    break;
+                case "actualizarReserva":
+                     idMesa = Integer.parseInt(request.getParameter("idMesa"));
+                    int ultimoIdReserva = rs.obtenerIdReserva();
+                    rs.asignarMesa(idMesa, ultimoIdReserva);
                     response.sendRedirect(request.getContextPath() + "/verReserva.jsp");
                     break;
-
+                case "irReserva":
+                    idMesa = Integer.parseInt(request.getParameter("nMesa"));
+                    session.setAttribute("nMesa", idMesa);
+                    response.sendRedirect(request.getContextPath() + "/reservar.jsp");
+                    break;
                 case "Registrarse":
 
                     String rut = request.getParameter("rut");
