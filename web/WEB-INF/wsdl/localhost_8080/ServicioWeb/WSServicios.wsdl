@@ -10,18 +10,6 @@
 <message name="obtenerIDReservaResponse">
 <part name="parameters" element="tns:obtenerIDReservaResponse"/>
 </message>
-<message name="agregarReserva">
-<part name="parameters" element="tns:agregarReserva"/>
-</message>
-<message name="agregarReservaResponse">
-<part name="parameters" element="tns:agregarReservaResponse"/>
-</message>
-<message name="ListarReserva">
-<part name="parameters" element="tns:ListarReserva"/>
-</message>
-<message name="ListarReservaResponse">
-<part name="parameters" element="tns:ListarReservaResponse"/>
-</message>
 <message name="ListarMesa">
 <part name="parameters" element="tns:ListarMesa"/>
 </message>
@@ -34,10 +22,36 @@
 <message name="asignarMesaResponse">
 <part name="parameters" element="tns:asignarMesaResponse"/>
 </message>
+<message name="agregarReserva">
+<part name="parameters" element="tns:agregarReserva"/>
+</message>
+<message name="agregarReservaResponse">
+<part name="parameters" element="tns:agregarReservaResponse"/>
+</message>
+<message name="ListarReserva">
+<part name="parameters" element="tns:ListarReserva"/>
+</message>
+<message name="ListarReservaResponse">
+<part name="parameters" element="tns:ListarReservaResponse"/>
+</message>
+<message name="MesaId">
+<part name="parameters" element="tns:MesaId"/>
+</message>
+<message name="MesaIdResponse">
+<part name="parameters" element="tns:MesaIdResponse"/>
+</message>
 <portType name="WSServicios">
 <operation name="obtenerIDReserva">
 <input wsam:Action="http://ServicioWeb/WSServicios/obtenerIDReservaRequest" message="tns:obtenerIDReserva"/>
 <output wsam:Action="http://ServicioWeb/WSServicios/obtenerIDReservaResponse" message="tns:obtenerIDReservaResponse"/>
+</operation>
+<operation name="ListarMesa">
+<input wsam:Action="http://ServicioWeb/WSServicios/ListarMesaRequest" message="tns:ListarMesa"/>
+<output wsam:Action="http://ServicioWeb/WSServicios/ListarMesaResponse" message="tns:ListarMesaResponse"/>
+</operation>
+<operation name="asignarMesa">
+<input wsam:Action="http://ServicioWeb/WSServicios/asignarMesaRequest" message="tns:asignarMesa"/>
+<output wsam:Action="http://ServicioWeb/WSServicios/asignarMesaResponse" message="tns:asignarMesaResponse"/>
 </operation>
 <operation name="agregarReserva">
 <input wsam:Action="http://ServicioWeb/WSServicios/agregarReservaRequest" message="tns:agregarReserva"/>
@@ -47,13 +61,9 @@
 <input wsam:Action="http://ServicioWeb/WSServicios/ListarReservaRequest" message="tns:ListarReserva"/>
 <output wsam:Action="http://ServicioWeb/WSServicios/ListarReservaResponse" message="tns:ListarReservaResponse"/>
 </operation>
-<operation name="ListarMesa">
-<input wsam:Action="http://ServicioWeb/WSServicios/ListarMesaRequest" message="tns:ListarMesa"/>
-<output wsam:Action="http://ServicioWeb/WSServicios/ListarMesaResponse" message="tns:ListarMesaResponse"/>
-</operation>
-<operation name="asignarMesa">
-<input wsam:Action="http://ServicioWeb/WSServicios/asignarMesaRequest" message="tns:asignarMesa"/>
-<output wsam:Action="http://ServicioWeb/WSServicios/asignarMesaResponse" message="tns:asignarMesaResponse"/>
+<operation name="MesaId">
+<input wsam:Action="http://ServicioWeb/WSServicios/MesaIdRequest" message="tns:MesaId"/>
+<output wsam:Action="http://ServicioWeb/WSServicios/MesaIdResponse" message="tns:MesaIdResponse"/>
 </operation>
 </portType>
 <binding name="WSServiciosPortBinding" type="tns:WSServicios">
@@ -67,6 +77,24 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="ListarMesa">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="asignarMesa">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="agregarReserva">
 <soap:operation soapAction=""/>
 <input>
@@ -85,16 +113,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="ListarMesa">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="asignarMesa">
+<operation name="MesaId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

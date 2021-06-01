@@ -5,21 +5,23 @@
  */
 package Modelo;
 
+import WebServiceCliente.Mesa;
+
 /**
  *
  * @author Diego
  */
-public class Mesa {
+public class MesaService {
     int id;
     int nr_mesa;
     char estado, activo;
     String UsuarioRut, UsuarioRol_ID_ROL;
     
 
-    public Mesa() {
+    public MesaService() {
     }
 
-    public Mesa(int id, int nr_mesa, char estado, char activo, String UsuarioRut, String UsuarioRol_ID_ROL) {
+    public MesaService(int id, int nr_mesa, char estado, char activo, String UsuarioRut, String UsuarioRol_ID_ROL) {
         this.id = id;
         this.nr_mesa = nr_mesa;
         this.estado = estado;
@@ -28,6 +30,14 @@ public class Mesa {
         this.UsuarioRol_ID_ROL = UsuarioRol_ID_ROL;
     }
 
+    
+   
+    
+    
+    
+    
+    
+    
     public int getId() {
         return id;
     }

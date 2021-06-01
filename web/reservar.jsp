@@ -3,7 +3,9 @@
     Created on : 09-05-2021, 14:43:27
     Author     : dsaez
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="WebServiceCliente.Mesa"%>
+<%@page import="DAO.MesaDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,23 +39,32 @@
 
     </style>
     <body>
+        <% if (session.getAttribute("cliente") == null) {
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
+            }%>
         <div class="contenedor">
             <div class="contenedor-login">
                 <h1 class="titulo">SIGLO XXI</h1>
                 <div class="contenedor-reserva">
                     <h1>Registrar Reserva</h1>
-                    <% String hidden = request.getParameter("nMesa");%>
-                    El valor oculto es <%=hidden%>
-                    <%!
-                        String numeroMesa;
-                    %>
+
                     <%
-                    numeroMesa=request.getParameter("nMesa");%>
-                    <h1><%= numeroMesa  %></h1>
+
+                        int id = 8;
+                        try {
+
+                            id = Integer.parseInt((String)request.getAttribute("mesaid"));
+                        } catch (NumberFormatException e) {
+
+                        }
+                        MesaDAO mdao = new MesaDAO();
+                        Mesa m = mdao.mesaId(id);
+                    %>
 
 
                     <form action="SigloXXI?accion=Reservando" method="POST">
-                        <!--  <input type="hidden"  name="idMesa" id="idMesa" value="hidden" /><br> -->
+                        <label>Número de mesa seleccionada</label>
+                        <input type="text" value="<%=m.getId()%>" name="txtidmesa" readonly="" class="form-control">
                         <label for="fecha">Ingrese fecha de inicio</label>
                         <input type="datetime" placeholder="Ingrese fecha y hora" name="inicio" id="inicio"/><br>
                         <label for="fecha">Ingrese fecha de termino</label>
@@ -73,10 +84,15 @@
                             onclick="asignarMesa.submit()"
                             />
                     </form>
-                    <form name="asignarMesa" action="SigloXXI?accion=actualizarReserva" method="POST" hidden="">
-                        <input type="hidden"  name="idMesa" id="idMesa" value="<%=numeroMesa%>" /><br>
-
+                    <form action="SigloXXI?accion=HOME" method="POST">
+                        <input
+                            type="submit"
+                            name="accion"
+                            value="Regresar"
+                            class="btn btn-primary"
+                            />
                     </form>
+
 
                 </div>
             </div>

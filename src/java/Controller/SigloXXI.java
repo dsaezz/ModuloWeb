@@ -11,15 +11,16 @@ import DAO.PlatoDAO;
 import DAO.ReservaDAO;
 import DAO.UsuarioDAO;
 import Modelo.Cliente;
-import Modelo.Mesa;
 import Modelo.Plato;
 import Modelo.ReservaService;
 import Modelo.Usuario;
+import WebServiceCliente.Mesa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/SigloXXI")
 public class SigloXXI extends HttpServlet {
+
     int idMesa;
     MesaDAO mdao = new MesaDAO();
     UsuarioDAO udao = new UsuarioDAO();
@@ -36,8 +38,7 @@ public class SigloXXI extends HttpServlet {
     ReservaDAO rdao = new ReservaDAO();
     ClienteDAO cdao = new ClienteDAO();
     ReservaService rs = new ReservaService();
-    List<Mesa> m = mdao.listar();
-   
+    // List<Mesa> m = mdao.listar();
 
     public SigloXXI() {
     }
@@ -45,7 +46,25 @@ public class SigloXXI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String accion = request.getParameter("accion");
+        try {
+            switch (accion) {
 
+                case "irReserva":
+
+//                    
+                    session.setAttribute("mesaid", Integer.parseInt(request.getParameter("mesaid")));
+                    response.sendRedirect(request.getContextPath() + "/reservar.jsp");
+
+                    break;
+
+                default:
+                    throw new AssertionError();
+            }
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
@@ -71,10 +90,10 @@ public class SigloXXI extends HttpServlet {
                     }
                     break;
                 case "Reservar":
-                    List<Mesa> datos = mdao.listar();
+                    //   List<Mesa> datos = mdao.listar();
                     //request.setAttribute("datos", datos);
 
-                    session.setAttribute("listarMesa", datos);
+                    // session.setAttribute("listarMesa", datos);
                     //request.getRequestDispatcher("listarMesa.jsp").forward(request, response);
                     response.sendRedirect(request.getContextPath() + "/listarMesa.jsp");
                     break;
@@ -87,15 +106,32 @@ public class SigloXXI extends HttpServlet {
 
                     break;
                 case "actualizarReserva":
-                     idMesa = Integer.parseInt(request.getParameter("idMesa"));
+                    idMesa = Integer.parseInt(request.getParameter("idMesa"));
                     int ultimoIdReserva = rs.obtenerIdReserva();
                     rs.asignarMesa(idMesa, ultimoIdReserva);
                     response.sendRedirect(request.getContextPath() + "/verReserva.jsp");
                     break;
                 case "irReserva":
-                    idMesa = Integer.parseInt(request.getParameter("nMesa"));
-                    session.setAttribute("nMesa", idMesa);
+
+//                    String email = request.getParameter("email");
+//                    String password = request.getParameter("password");
+//                    Cliente cliente = cdao.login(email, password);
+//                       if (cliente == null) {
+//                        //request.getRequestDispatcher("login.jsp").forward(request, response);
+//                        response.sendRedirect(request.getContextPath() + "/login.jsp");
+//                    } else {
+//
+//                        session.setAttribute("cliente", cliente);
+//                        response.sendRedirect(request.getContextPath() + "/home.jsp");
+//                    }
+                    //int id = Integer.parseInt(request.getParameter("id"));
+                    //Mesa mesa = mdao.mesaId(id);
+                    session.setAttribute("mesaid", request.getParameter("id"));
+                    // request.getRequestDispatcher("reservar.jsp").forward(request, response);
                     response.sendRedirect(request.getContextPath() + "/reservar.jsp");
+                    // ms = mdao.listar();
+                    // idMesa = Integer.parseInt(request.getParameter("nMesa"));
+
                     break;
                 case "Registrarse":
 

@@ -1,3 +1,6 @@
+<%@page import="WebServiceCliente.Mesa"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.MesaDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -19,6 +22,7 @@
         <% if (session.getAttribute("cliente") == null) {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             }%>
+
         <div class="contenedor">
             <jsp:include page="perfil.jsp" />
 
@@ -35,46 +39,12 @@
                             </form>
                 -->
                 <div class="disponible">
-                    <c:forEach var="dato" items="${listarMesa}">
-                        <c:if test="${dato.getEstado() == 'D'}">
-                            <div class="card">
-                                <img
-                                    src="http://loredomuebles.com/wp-content/uploads/2017/11/MESAS-1080x675.jpg"
-                                    class="card-img-top"
-                                    alt="imagen-mesa"
-                                    />
-                                <div class="card-body">
-                                    <h5 class="card-title">Mesa ${dato.getId()}</h5>
-                                    <p class="card-text">
-
-                                        Mesa para ${dato.getNr_mesa()} personas.
-
-                                    </p>
-
-                                    <form name="res" action="SigloXXI?accion=irReserva" method="post" >
-                                        <input type="hidden" id="mesa" name="mesa" value=${dato}>
-                                    </form>
-                                      
-                                          <%
-                                        String numeroMesa;
-                                        numeroMesa=request.getParameter("mesa");
-                                        
-                                        %>
-                                           <button
-                                          type="submit"
-                                          class="btn btn-primary"
-                                          onclick="res.submit()"
-                                          >
-                                          Reservar
-                                           </button>
-
-
-
-                                </div>
-                            </div>
-                       
-                    </c:if>
-                    <c:if test="${dato.getEstado() == 'O'}">
+                    <%
+                        MesaDAO mdao = new MesaDAO();
+                        List<Mesa> mlist = mdao.listar();
+                        for (Mesa dato : mlist) {
+                    %>
+                    <c:if test="<%=dato.getEstado() == 'D'%>">
                         <div class="card">
                             <img
                                 src="http://loredomuebles.com/wp-content/uploads/2017/11/MESAS-1080x675.jpg"
@@ -82,9 +52,45 @@
                                 alt="imagen-mesa"
                                 />
                             <div class="card-body">
-                                <h5 class="card-title">Mesa ${dato.getId()}</h5>
+                                <h5 class="card-title">Mesa <%=dato.getId()%></h5>
                                 <p class="card-text">
-                                    Mesa para ${dato.getNr_mesa()} personas.
+
+                                    Mesa para <%=dato.getNrMesa()%> personas. 
+
+                                </p>
+
+                                <form name="res" action="SigloXXI?accion=irReserva&id=<%=dato.getId()%>" method="post" >
+                                    <input type="hidden" id="mesa" name="mesa" value=<%=dato.getId()%>>
+                                </form>
+
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    onclick="res.submit()"
+                                    >
+                                    Reservar
+                                </button>
+
+                                <a href="SigloXXI?accion=irReserva&mesaid=<%=dato.getId()%>" class="btn btn-primary">Reservar</a>
+
+
+
+                            </div>
+                        </div>
+
+                    </c:if>
+                    <c:if test="<%=dato.getEstado() == 'O'%>">
+                        <div class="card">
+                            <img
+                                src="http://loredomuebles.com/wp-content/uploads/2017/11/MESAS-1080x675.jpg"
+                                class="card-img-top"
+                                alt="imagen-mesa"
+                                />
+                            <div class="card-body">
+                                <h5 class="card-title">Mesa <%=dato.getId()%></h5>
+                                <p class="card-text">
+                                    Mesa para <%=dato.getNrMesa()%> personas.
                                 </p>
 
                                 <button
@@ -104,8 +110,8 @@
 
 
                     </c:if>
-                </c:forEach>
- </div>
+                    <%}%>
+                </div>
                 <div
                     class="modal fade"
                     id="modal1"

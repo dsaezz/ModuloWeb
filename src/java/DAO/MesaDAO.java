@@ -11,7 +11,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
-import Modelo.Mesa;
+import Modelo.MesaService;
+import WebServiceCliente.Mesa;
 import java.sql.CallableStatement;
 import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleResultSet;
@@ -42,18 +43,18 @@ public class MesaDAO {
             while (rs.next()) {
                 Mesa m = new Mesa();
                 m.setId(rs.getInt(1));
-                m.setNr_mesa(rs.getInt(2));
-                
+                m.setNrMesa(rs.getInt(2));
+
                 String variable;
                 variable = rs.getString(3);
                 char caracter = variable.charAt(0);
                 m.setEstado(caracter);
-                
+
                 String ac;
                 ac = rs.getString(4);
                 char activo = ac.charAt(0);
                 m.setActivo(activo);
-                
+
                 lista.add(m);
             }
         } catch (Exception e) {
@@ -63,5 +64,10 @@ public class MesaDAO {
 
     }
 
+    public static Mesa mesaId(int id) {
+        WebServiceCliente.WSServicios_Service service = new WebServiceCliente.WSServicios_Service();
+        WebServiceCliente.WSServicios port = service.getWSServiciosPort();
+        return port.mesaId(id);
+    }
 
 }

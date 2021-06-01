@@ -6,7 +6,7 @@
 package DAO;
 
 import Config.Conexion;
-import Modelo.Mesa;
+import Modelo.MesaService;
 import Modelo.ReservaService;
 import java.sql.CallableStatement;
 import java.sql.Connection;
