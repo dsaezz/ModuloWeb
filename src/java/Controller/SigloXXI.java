@@ -39,6 +39,7 @@ public class SigloXXI extends HttpServlet {
     ClienteDAO cdao = new ClienteDAO();
     ReservaService rs = new ReservaService();
     // List<Mesa> m = mdao.listar();
+    String mensaje;
 
     public SigloXXI() {
     }
@@ -50,7 +51,9 @@ public class SigloXXI extends HttpServlet {
         String accion = request.getParameter("accion");
         try {
             switch (accion) {
-
+                case "irLogin":
+                    response.sendRedirect(request.getContextPath() + "/login.jsp");
+                    break;
                 case "irReserva":
 
 //                    
@@ -142,9 +145,11 @@ public class SigloXXI extends HttpServlet {
                     String direccion = request.getParameter("direccion");
                     String pass = request.getParameter("pass");
                     cdao.registrar(rut, nombre, apellido, correo, direccion, pass);
-                    response.sendRedirect(request.getContextPath() + "/login.jsp");
+                    mensaje = "Registro exitoso!";
+                    session.setAttribute("mensaje", mensaje);
 
                     break;
+
                 case "HOME":
                     List<Plato> platos = pdao.listar();
 

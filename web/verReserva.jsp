@@ -22,6 +22,16 @@
         }
 
     </style>
+    <style>
+        table.table, thead.table,tbody.table{
+            border:2px solid #02adb5;
+            color: white-space; 
+        }
+        table {
+            padding:20px;
+        }
+
+    </style>
     <body>
   <% if (session.getAttribute("cliente") == null) {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");

@@ -59,8 +59,9 @@
 
                                 </p>
 
-                                <form name="res" action="SigloXXI?accion=irReserva&id=<%=dato.getId()%>" method="post" >
+                                <form name="res" action="SigloXXI?accion=irReserva" method="post" >
                                     <input type="hidden" id="mesa" name="mesa" value=<%=dato.getId()%>>
+                                    <input type="submit" value="Seleccionar">
                                 </form>
 
 
